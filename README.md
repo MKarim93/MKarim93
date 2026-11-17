@@ -1,5 +1,7 @@
 # Mohammad Karim
 
+[Visit my cybersecurity portfolio](https://mkarim93.github.io/MKarim93/)
+
 I’m a QA engineer with 5+ years of experience in manual and automated testing, now working toward a role in security operations. I bring the same habits to security investigations that I use in QA: reproduce the behavior, compare it with what you expect, capture the evidence, and explain what to check next.
 
 ## Security operations practice
