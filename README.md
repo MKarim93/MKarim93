@@ -6,7 +6,7 @@ I’m a QA engineer with 5+ years of experience in manual and automated testing,
 
 ## Security operations practice
 
-My current focus is Windows authentication logs, network traffic analysis, and incident triage. My first planned case study will use Windows Security events to build a sign-in timeline, distinguish failed attempts from successful logons, and explain what evidence would justify escalation.
+[FAA nationwide ground stop investigation](https://mkarim93.github.io/MKarim93/#security) examines the November 13, 2026 network disruption, reconstructs the incident timeline, assesses the public evidence for a CVE, and proposes controls for safer network changes and recovery.
 
 ## Selected QA automation projects
 
