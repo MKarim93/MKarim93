@@ -1,16 +1,19 @@
-## Hi there 👋
+# Mohammad Karim
 
-<!--
-**MKarim93/MKarim93** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+I’m a QA engineer with 5+ years of experience in manual and automated testing, now working toward a role in security operations. I bring the same habits to security investigations that I use in QA: reproduce the behavior, compare it with what you expect, capture the evidence, and explain what to check next.
 
-Here are some ideas to get you started:
+## Security operations practice
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+My current focus is Windows authentication logs, network traffic analysis, and incident triage. My first planned case study will use Windows Security events to build a sign-in timeline, distinguish failed attempts from successful logons, and explain what evidence would justify escalation.
+
+## Selected QA automation projects
+
+| Project | What it shows |
+| --- | --- |
+| [Selenium UI Automation Framework](https://github.com/MKarim93/ui-automation-framework) | A Java, Selenium, TestNG, and Maven framework with configuration-driven setup and tests for the SauceDemo web app. |
+| [Playwright Framework](https://github.com/MKarim93/Playwright-Framework) | TypeScript browser-test automation with Playwright configuration and organized UI tests. |
+| [Appium Java Framework](https://github.com/MKarim93/Appium-Java-framework) | A Java and Maven project structured for mobile test automation with Appium. |
+
+## Connect
+
+[LinkedIn](https://www.linkedin.com/in/mohammad-karim-195a11177/)
