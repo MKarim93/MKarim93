@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Mohammad Karim’s portfolio, featuring QA automation projects and a focus on defensive cybersecurity and security operations.">
+  <meta name="description" content="Mohammad Karim’s cybersecurity portfolio, featuring a sourced FAA ground stop investigation and QA automation projects.">
   <meta name="theme-color" content="#170e0c">
   <title>Mohammad Karim | Cybersecurity Portfolio</title>
   <style>
@@ -136,6 +136,25 @@
         to { opacity: 1; transform: scale(1) rotate(0); }
       }
     }
+
+    .investigation { display: grid; gap: 1rem; }
+    .investigation h3 { letter-spacing: -.035em; }
+    .investigation .case-evidence h3 { margin-block: .55rem .75rem; font-size: clamp(1.35rem, 2.5vw, 1.85rem); }
+    .report-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+    .report-panel { padding: clamp(1.15rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: .65rem; background: #fffaf2; }
+    .report-panel h3 { margin-bottom: .8rem; font-size: clamp(1.25rem, 2.3vw, 1.8rem); }
+    .report-panel p + p { margin-top: .85rem; }
+    .report-note { color: var(--rust); font: 600 .73rem/1.4 var(--mono); white-space: nowrap; }
+    .report-timeline, .report-sources { margin: 0; padding-left: 1.35rem; }
+    .report-timeline li + li, .report-sources li + li { margin-top: .55rem; }
+    .report-timeline li::marker, .report-sources li::marker { color: var(--rust); }
+    .report-controls { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .8rem; margin: .8rem 0 0; }
+    .report-controls div { padding: .85rem 1rem; border-left: 3px solid var(--orange); background: #fff0df; }
+    .report-controls dt { font-weight: 720; }
+    .report-controls dd { margin: .2rem 0 0; }
+    .report-panel a { color: var(--rust); }
+    .report-sources li { scroll-margin-top: 1rem; }
+    @media (max-width: 48rem) { .report-grid, .report-controls { grid-template-columns: minmax(0, 1fr); } }
   </style>
 </head>
 <body id="top">
@@ -158,7 +177,7 @@
           <h1>Mohammad <span>Karim</span></h1>
           <p class="intro">I’m a QA engineer with 5+ years in manual and automated testing, building toward a role in security operations. I bring a tester’s habit of reproducing behavior, gathering evidence, and documenting what to check next.</p>
           <div class="actions">
-            <a class="button primary" href="#security">Explore security practice <span aria-hidden="true">↓</span></a>
+            <a class="button primary" href="#security">Read the FAA investigation <span aria-hidden="true">↓</span></a>
             <a class="button" href="https://github.com/MKarim93">GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </div>
@@ -178,23 +197,70 @@
     <div class="wrap">
       <section class="block" id="security" aria-labelledby="security-title">
         <header class="section-head">
-          <h2 id="security-title">Security practice</h2>
-          <p>Building the skills to investigate activity, explain the evidence, and decide when to escalate.</p>
+          <h2 id="security-title">FAA ground stop investigation</h2>
+          <p>A defensive case study of the November 13, 2026 U.S. ground stop, based on public reporting through November 17.</p>
         </header>
-        <article class="case-study">
-          <div class="case-intro">
-            <p class="eyebrow">Planned SOC case study</p>
-            <h3>Windows sign-in investigation</h3>
-            <p>Use Windows Security logs in a lab to reconstruct sign-in activity and explain what would warrant escalation.</p>
+
+        <article class="investigation" aria-label="Incident report">
+          <div class="case-study">
+            <div class="case-intro">
+              <p class="eyebrow">Incident summary</p>
+              <h3>A network disruption halted departures nationwide</h3>
+              <p>Excessive connection attempts destabilized parts of the FAA’s telecommunications network, affecting radio communications and radar feeds. The FAA paused departures while teams isolated the disruption and checked network stability. Some frequencies and feeds remained usable. <a href="#faa-source">[1]</a></p>
+            </div>
+            <div class="case-evidence">
+              <p class="eyebrow">CVE assessment</p>
+              <h3>No CVE publicly linked to the incident</h3>
+              <p>As of November 17, the FAA reported no indication of a cyberattack, and the public sources reviewed did not identify an incident-linked CVE. CVE IDs identify disclosed cybersecurity vulnerabilities. Identifying a router or its vendor alone does not establish a vulnerability match. <a href="#faa-source">[1]</a> <a href="#senate-source">[3]</a> <a href="#cve-source">[5]</a></p>
+            </div>
           </div>
-          <div class="case-evidence">
-            <p class="eyebrow">Planned deliverables</p>
-            <ul>
-              <li>A timeline of failed and successful logons</li>
-              <li>Sanitized examples of the events used as evidence</li>
-              <li>A triage summary with findings and follow-up questions</li>
-            </ul>
+
+          <div class="report-grid">
+            <section class="report-panel" aria-labelledby="mechanism-title">
+              <h3 id="mechanism-title">How it happened</h3>
+              <p>L3Harris was replacing a router at a radio communications site in El Dorado, Arkansas. The FAA identified El Dorado and a radar site in Amarillo, Texas, as possible sources of the excessive traffic. The FAA reported roughly 1,000 connection attempts per four to five seconds and instability at 17 of 22 en-route control centers. The network stabilized after L3Harris isolated the two sites. <a href="#faa-source">[1]</a></p>
+              <p><strong>Open question.</strong> The reviewed sources did not establish what generated the traffic or how the disruption spread. Configuration, software behavior, and interaction with legacy equipment are hypotheses to test. Senate committee members requested a technical briefing and independent validation of failover and rollback. <a href="#senate-source">[3]</a></p>
+            </section>
+
+            <section class="report-panel" aria-labelledby="timeline-title">
+              <h3 id="timeline-title">Timeline <span class="report-note">Eastern time</span></h3>
+              <ol class="report-timeline">
+                <li><strong>Nov. 13 · About 3:30 p.m.</strong> Technical problems began and the FAA ordered a nationwide ground stop that afternoon. <a href="#faa-source">[1]</a></li>
+                <li><strong>Nov. 13 · During the stop</strong> L3Harris isolated the two sites. The FAA reported that the network stabilized, then held departures while stability was checked. <a href="#faa-source">[1]</a></li>
+                <li><strong>Nov. 13 · 8:15 p.m.</strong> Air traffic began resuming after the stop was lifted. <a href="#dot-source">[2]</a></li>
+                <li><strong>Nov. 15–17</strong> The FAA released its preliminary account. Senate committee members publicly requested a root-cause explanation and evidence of readiness before more routers were deployed. <a href="#faa-source">[1]</a> <a href="#senate-source">[3]</a></li>
+              </ol>
+            </section>
           </div>
+
+          <section class="report-panel" aria-labelledby="prevention-title">
+            <h3 id="prevention-title">How to reduce the risk of recurrence</h3>
+            <p><strong>Reported FAA response.</strong> The FAA said the broadcasting function was disabled on more than 60 similar routers as a precaution. <a href="#faa-source">[1]</a></p>
+            <p><strong>Proposed controls and how to verify them.</strong></p>
+            <dl class="report-controls">
+              <div><dt>Test compatibility before rollout</dt><dd>Validate the router configuration in a representative environment with legacy and new equipment. Exercise the relevant feature, sustained load, and failover. Require evidence that simulated radio and radar feeds remain stable.</dd></div>
+              <div><dt>Stage changes and rehearse rollback</dt><dd>Start with an isolated pilot, compare health to a baseline, and require independent sign-off. Rehearse restoring the last known-good configuration and record recovery time before expanding the rollout.</dd></div>
+              <div><dt>Limit the impact of a failing site</dt><dd>Evaluate separation of critical traffic from other network traffic and independently routed backups. In an authorized test environment, verify that a local fault stays contained and that the backup path carries critical services.</dd></div>
+              <div><dt>Alert on service degradation</dt><dd>Correlate abnormal connection rates with radio and radar feed health. Use test alerts to verify that operators can identify the affected site and follow the containment and escalation runbook.</dd></div>
+            </dl>
+          </section>
+
+          <section class="report-panel" aria-labelledby="follow-up-title">
+            <h3 id="follow-up-title">What evidence would close the case?</h3>
+            <p>Compare approved change records with before-and-after configurations, network telemetry, and failover logs. Confirm the affected model, software version, and feature before checking vendor advisories for an exact match. This review draws on public statements and does not include internal FAA telemetry.</p>
+            <p><strong>Earlier ground stop.</strong> On January 11, 2023, the FAA paused departures after a separate Notice to Air Missions (NOTAM) outage. Its preliminary review attributed that outage to accidental file deletion during database synchronization work. Both incidents make a case for testing recovery during maintenance, with different systems and reported failure mechanisms. <a href="#notam-source">[4]</a></p>
+          </section>
+
+          <section class="report-panel" aria-labelledby="sources-title">
+            <h3 id="sources-title">Sources</h3>
+            <ol class="report-sources">
+              <li id="faa-source"><a href="https://www.faa.gov/newsroom/nationwide-ground-stop-questions-and-answers">FAA ground stop questions and answers</a> · November 15, 2026</li>
+              <li id="dot-source"><a href="https://www.transportation.gov/briefing-room/icymi-us-transportation-secretary-sean-p-duffy-announces-lifting-nationwide-ground">U.S. Department of Transportation briefing on lifting the ground stop</a> · November 13, 2026</li>
+              <li id="senate-source"><a href="https://www.commerce.senate.gov/press/dem/release/commerce-committee-democrats-demand-clear-fact-based-answers-from-dot-faa-on-root-cause-of-nov-13th-nationwide-ground-stop/">Senate Commerce Committee members’ request for technical findings</a> · November 17, 2026</li>
+              <li id="notam-source"><a href="https://www.faa.gov/newsroom/faa-notam-statement">FAA statements on the NOTAM outage</a> · January 2023</li>
+              <li id="cve-source"><a href="https://www.cve.org/About/Overview">CVE Program overview</a></li>
+            </ol>
+          </section>
         </article>
       </section>
       <section class="block" id="projects" aria-labelledby="projects-title">
