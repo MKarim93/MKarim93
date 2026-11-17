@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mohammad Karim’s portfolio, featuring QA automation projects and a focus on defensive cybersecurity and security operations.">
+  <meta name="theme-color" content="#0d1919">
+  <title>Mohammad Karim | Cybersecurity Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #132420;
+      --muted: #485953;
+      --paper: #f4f5ed;
+      --line: #c8d0c2;
+      --dark: #0d1919;
+      --mint: #bbf6ce;
+      --white: #f7f9ef;
+      --mono: ui-monospace, Consolas, monospace;
+      --sans: "Segoe UI", system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.6 var(--sans); }
+    a { color: inherit; text-underline-offset: .23em; }
+    a:focus-visible { outline: 3px solid currentColor; outline-offset: 5px; }
+    p, h1, h2, h3 { margin: 0; }
+    h1, h2, h3 { line-height: 1.08; }
+    .wrap { width: min(72rem, 100% - clamp(2rem, 8vw, 8rem)); margin-inline: auto; }
+    .skip { position: absolute; left: 1rem; top: 1rem; z-index: 2; padding: .65rem 1rem; background: var(--mint); transform: translateY(-200%); }
+    .skip:focus { transform: none; }
+    .masthead { background: var(--dark); color: var(--white); border-bottom: 1px solid #31443d; }
+    .topline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; min-height: 4.6rem; padding-block: .7rem; }
+    .brand { text-decoration: none; font-weight: 740; letter-spacing: -.02em; }
+    .brand span { color: var(--mint); margin-right: .4rem; }
+    nav { display: flex; flex-wrap: wrap; gap: .45rem clamp(.7rem, 3vw, 1.8rem); }
+    nav a { color: #d0ded4; text-decoration: none; font-size: .92rem; }
+    nav a:hover, .brand:hover { text-decoration: underline; }
+    .hero { background: var(--dark); color: var(--white); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(17rem, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; padding-block: clamp(3.7rem, 9vw, 8rem); }
+    .eyebrow { color: #406653; font: 650 .76rem/1.4 var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+    .hero .eyebrow { color: var(--mint); }
+    h1 { margin-block: .85rem 1.2rem; font-size: clamp(3.3rem, 8vw, 7.8rem); line-height: .88; letter-spacing: -.085em; font-weight: 790; }
+    h1 span { display: block; }
+    .intro { max-width: 42ch; color: #d0ded4; font-size: clamp(1rem, 2vw, 1.21rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.7rem; }
+    .button { display: inline-flex; align-items: center; gap: .55rem; padding: .62rem .9rem; border: 1px solid #789287; text-decoration: none; font-weight: 650; }
+    .button.primary { background: var(--mint); border-color: var(--mint); color: var(--dark); }
+    .button:hover { text-decoration: underline; }
+    .focus { position: relative; padding: clamp(1.15rem, 2.5vw, 2rem); border: 1px solid #456256; background-color: #142522; background-image: linear-gradient(#20372e 1px, transparent 1px), linear-gradient(90deg, #20372e 1px, transparent 1px); background-size: 1.4rem 1.4rem; }
+    .focus::before { position: absolute; top: -1px; left: -1px; width: 4.25rem; height: 3px; background: var(--mint); content: ""; }
+    .focus ul { margin: .9rem 0 0; padding: 0; list-style: none; background: #142522; }
+    .focus li { display: flex; gap: .75rem; align-items: center; padding: .76rem 0; border-top: 1px solid #456256; font-weight: 610; }
+    .focus li::before { width: .55rem; height: .55rem; flex: 0 0 .55rem; border: 1px solid var(--mint); border-radius: 50%; content: ""; }
+    section.block { padding-block: clamp(2.8rem, 6vw, 5rem); }
+    section.block + section.block { border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem 2rem; align-items: end; margin-bottom: 1.45rem; }
+    h2 { font-size: clamp(2rem, 4.75vw, 3.9rem); letter-spacing: -.055em; }
+    .section-head p { color: var(--muted); max-width: 45ch; justify-self: end; }
+    .case-study { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); border: 1px solid var(--line); background: #e7eee2; }
+    .case-intro, .case-evidence { padding: clamp(1.25rem, 3.5vw, 2.2rem); }
+    .case-intro h3 { margin-block: .55rem .75rem; font-size: clamp(1.45rem, 3vw, 2.35rem); letter-spacing: -.04em; }
+    .case-intro p:last-child { color: var(--muted); max-width: 49ch; }
+    .case-evidence { border-left: 1px solid var(--line); background: #edf1e8; }
+    .case-evidence ul { margin: .7rem 0 0; padding-left: 1.12rem; }
+    .case-evidence li + li { margin-top: .35rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; }
+    .card { display: flex; flex-direction: column; padding: clamp(1.15rem, 2.7vw, 1.8rem); background: #fcfdf7; border: 1px solid var(--line); }
+    .card h3 { margin-block: .65rem .65rem; font-size: clamp(1.26rem, 2vw, 1.7rem); letter-spacing: -.035em; }
+    .card p:not(.eyebrow) { color: var(--muted); margin-bottom: 1.25rem; }
+    .card a { align-self: flex-start; margin-top: auto; font-weight: 660; }
+    .footer { background: var(--dark); color: var(--white); }
+    .footer .topline { min-height: 6.2rem; }
+    @media (max-width: 48rem) {
+      .hero-grid, .section-head, .case-study { grid-template-columns: 1fr; }
+      .focus { max-width: 35rem; }
+      .section-head p { justify-self: start; }
+      .case-evidence { border-left: 0; border-top: 1px solid var(--line); }
+      .cards { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap topline">
+      <a class="brand" href="#top"><span aria-hidden="true">◆</span> Mohammad Karim</a>
+      <nav aria-label="Portfolio">
+        <a href="#security">Security practice</a>
+        <a href="#projects">QA projects</a>
+        <a href="#connect">Connect</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Cybersecurity portfolio</p>
+          <h1>Mohammad <span>Karim</span></h1>
+          <p class="intro">I’m a QA engineer with 5+ years in manual and automated testing, building toward a role in security operations. I bring a tester’s habit of reproducing behavior, gathering evidence, and documenting what to check next.</p>
+          <div class="actions">
+            <a class="button primary" href="#security">Explore security practice <span aria-hidden="true">↓</span></a>
+            <a class="button" href="https://github.com/MKarim93">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <aside class="focus" aria-labelledby="focus-title">
+          <p class="eyebrow" id="focus-title">Current focus</p>
+          <ul>
+            <li>Windows authentication logs</li>
+            <li>Network traffic analysis</li>
+            <li>Incident triage</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+    <div class="wrap">
+      <section class="block" id="security" aria-labelledby="security-title">
+        <header class="section-head">
+          <h2 id="security-title">Security practice</h2>
+          <p>Building the skills to investigate activity, explain the evidence, and decide when to escalate.</p>
+        </header>
+        <article class="case-study">
+          <div class="case-intro">
+            <p class="eyebrow">Planned SOC case study</p>
+            <h3>Windows sign-in investigation</h3>
+            <p>Use Windows Security logs in a lab to reconstruct sign-in activity and explain what would warrant escalation.</p>
+          </div>
+          <div class="case-evidence">
+            <p class="eyebrow">Planned deliverables</p>
+            <ul>
+              <li>A timeline of failed and successful logons</li>
+              <li>Sanitized examples of the events used as evidence</li>
+              <li>A triage summary with findings and follow-up questions</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <section class="block" id="projects" aria-labelledby="projects-title">
+        <header class="section-head">
+          <h2 id="projects-title">QA automation projects</h2>
+          <p>Selected repositories spanning web and mobile test automation.</p>
+        </header>
+        <div class="cards">
+          <article class="card">
+            <p class="eyebrow">Java · Selenium · TestNG</p>
+            <h3>Selenium UI Automation</h3>
+            <p>Configuration-driven browser tests for the SauceDemo web app, built with Java and Maven.</p>
+            <a href="https://github.com/MKarim93/ui-automation-framework">View Selenium repository <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="card">
+            <p class="eyebrow">TypeScript · Playwright</p>
+            <h3>Playwright Framework</h3>
+            <p>Browser automation with Playwright configuration and organized UI tests.</p>
+            <a href="https://github.com/MKarim93/Playwright-Framework">View Playwright repository <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Java · Appium · Maven</p>
+            <h3>Appium Java Framework</h3>
+            <p>A Java and Maven project structured for mobile test automation with Appium.</p>
+            <a href="https://github.com/MKarim93/Appium-Java-framework">View Appium repository <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer" id="connect">
+    <div class="wrap topline">
+      <p class="brand">Mohammad Karim</p>
+      <nav aria-label="Contact links">
+        <a href="https://github.com/MKarim93">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/mohammad-karim-195a11177/">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
